@@ -36,11 +36,7 @@ android {
     }
 }
 
-repositories {
-    flatDir {
-        dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
-    }
-}
+// ❌ DIHAPUS: Blok repositories { flatDir ... } → sekarang dikelola di settings.gradle
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
