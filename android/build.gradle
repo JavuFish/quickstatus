@@ -10,12 +10,9 @@ buildscript {
         classpath 'com.android.tools.build:gradle:8.3.0'
         // Google Services plugin
         classpath 'com.google.gms:google-services:4.4.4'
-
-        // NOTE: Application dependencies tetap di module build.gradle (app/build.gradle)
     }
 }
 
-// Import variabel custom
 apply from: "variables.gradle"
 
 allprojects {
@@ -35,6 +32,14 @@ subprojects {
                     targetCompatibility JavaVersion.VERSION_17
                 }
             }
+        }
+    }
+}
+
+// Clean task (Groovy DSL)
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}            }
         }
     }
 }
