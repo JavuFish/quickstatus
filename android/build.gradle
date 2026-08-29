@@ -36,15 +36,7 @@ subprojects {
     }
 }
 
-// Clean task (Groovy DSL)
+// Clean task (Groovy DSL klasik)
 task clean(type: Delete) {
-    delete rootProject.buildDir
-}            }
-        }
-    }
-}
-
-// Clean task
-tasks.register<Delete>("clean") {
     delete rootProject.buildDir
 }
