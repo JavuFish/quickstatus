@@ -1,7 +1,6 @@
 // Top-level build.gradle file
 
 buildscript {
-    // ✅ DITAMBAHKAN: Repositori wajib untuk mengunduh plugin AGP & Google Services
     repositories {
         google()
         mavenCentral()
@@ -9,7 +8,7 @@ buildscript {
     }
     dependencies {
         // Android Gradle Plugin versi stabil
-        classpath 'com.android.tools.build:gradle:8.2.2'
+        classpath 'com.android.tools.build:gradle:8.3.0'
         // Google Services plugin
         classpath 'com.google.gms:google-services:4.4.4'
     }
@@ -17,8 +16,7 @@ buildscript {
 
 apply from: "variables.gradle"
 
-// ❌ Blok allprojects dihapus sesuai pengaturan FAIL_ON_PROJECT_REPOS di settings.gradle
-
+// Force Java 17 compatibility untuk semua subproject Android
 subprojects {
     afterEvaluate { project ->
         if (project.hasProperty("android")) {
@@ -32,6 +30,7 @@ subprojects {
     }
 }
 
+// Clean task (Groovy DSL klasik)
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
