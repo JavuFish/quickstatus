@@ -13,6 +13,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        
+        // ✅ DITAMBAHKAN: flatDir untuk folder libs (menggantikan yang dihapus dari app/build.gradle)
+        flatDir {
+            dirs 'app/libs', 'capacitor-cordova-android-plugins/src/main/libs'
+        }
     }
 }
 
