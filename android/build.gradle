@@ -1,8 +1,11 @@
 // Top-level build.gradle file
 
 buildscript {
+    // ✅ DITAMBAHKAN: Repositori wajib untuk mengunduh plugin AGP & Google Services
     repositories {
-        // HAPUS google() dan mavenCentral() di sini
+        google()
+        mavenCentral()
+        gradlePluginPortal()
     }
     dependencies {
         // Android Gradle Plugin versi stabil
@@ -14,7 +17,7 @@ buildscript {
 
 apply from: "variables.gradle"
 
-// HAPUS blok allprojects { repositories { ... } }
+// ❌ Blok allprojects dihapus sesuai pengaturan FAIL_ON_PROJECT_REPOS di settings.gradle
 
 subprojects {
     afterEvaluate { project ->
