@@ -2,8 +2,7 @@
 
 buildscript {
     repositories {
-        google()
-        mavenCentral()
+        // HAPUS google() dan mavenCentral() di sini
     }
     dependencies {
         // Android Gradle Plugin versi stabil
@@ -15,14 +14,8 @@ buildscript {
 
 apply from: "variables.gradle"
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+// HAPUS blok allprojects { repositories { ... } }
 
-// Force Java 17 compatibility untuk semua subproject Android
 subprojects {
     afterEvaluate { project ->
         if (project.hasProperty("android")) {
@@ -36,7 +29,6 @@ subprojects {
     }
 }
 
-// Clean task (Groovy DSL klasik)
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
