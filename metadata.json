@@ -1,0 +1,6 @@
+{
+  "name": "QuickStatus",
+  "description": "Aplikasi status cepat & pembuatan konten multimedia elegan dengan filter estetis, video QuickClip 30 detik, AI auto-caption, integrasi multi-platform (WhatsApp, Instagram, TikTok), dan monetisasi AdMob.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
