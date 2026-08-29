@@ -9,27 +9,22 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
-        
-        // ✅ DITAMBAHKAN: flatDir untuk folder libs (menggantikan yang dihapus dari app/build.gradle)
-        flatDir {
-            dirs 'app/libs', 'capacitor-cordova-android-plugins/src/main/libs'
-        }
     }
 }
 
 rootProject.name = "QuickStatus"
 
-// Include main app module
+// Modul utama aplikasi
 include ':app'
 
-// Include Capacitor Android core
+// Modul Capacitor Android core
 include ':capacitor-android'
 project(':capacitor-android').projectDir = new File('../node_modules/@capacitor/android/capacitor')
 
-// Include Capacitor Cordova Android plugins
+// Modul Capacitor Cordova Android plugins
 include ':capacitor-cordova-android-plugins'
 project(':capacitor-cordova-android-plugins').projectDir = new File('../node_modules/@capacitor/cli/assets/android/capacitor-cordova-android-plugins')
