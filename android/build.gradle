@@ -14,7 +14,7 @@ buildscript {
 
 apply from: "variables.gradle"
 
-// Force Java 17 compatibility & override repositori subprojects
+// Force Java 17 compatibility untuk semua subproject Android
 subprojects {
     afterEvaluate { project ->
         if (project.hasProperty("android")) {
@@ -25,15 +25,8 @@ subprojects {
                 }
             }
         }
-        // Pastikan repositori modul mengikuti settings.gradle
+        // Hapus repositori tambahan dari modul node_modules
         project.repositories.clear()
-        project.repositories {
-            google()
-            mavenCentral()
-            flatDir {
-                dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
-            }
-        }
     }
 }
 
