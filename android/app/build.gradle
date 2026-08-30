@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "com.quickstatus.app"
+    namespace "com.xstudio.quickstatus"
     compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.quickstatus.app"
+        applicationId "com.xstudio.quickstatus"
         minSdk rootProject.ext.minSdkVersion
         targetSdk rootProject.ext.targetSdkVersion
         versionCode 1
