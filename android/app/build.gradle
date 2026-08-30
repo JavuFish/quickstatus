@@ -1,25 +1,22 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "com.xstudio.quickstatus"
+    namespace "com.quickstatus.app"
     compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.xstudio.quickstatus"
+        applicationId "com.quickstatus.app"
         minSdk rootProject.ext.minSdkVersion
         targetSdk rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         aaptOptions {
-            // Files and dirs to omit from packaged assets
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
 
-    // Force Java 17 compatibility
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
@@ -30,23 +27,22 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        debug {
-            // opsional: tambahkan konfigurasi debug jika perlu
-        }
     }
 }
 
-// ❌ DIHAPUS: Blok repositories { flatDir ... } → sekarang dikelola di settings.gradle
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    // AndroidX dependencies
     implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
     implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
     implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
 
+    // Capacitor modules
     implementation project(':capacitor-android')
     implementation project(':capacitor-cordova-android-plugins')
 
+    // Testing
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
@@ -54,6 +50,7 @@ dependencies {
 
 apply from: 'capacitor.build.gradle'
 
+// Google Services plugin (opsional, hanya jika ada google-services.json)
 try {
     def servicesJSON = file('google-services.json')
     if (servicesJSON.exists() && servicesJSON.text) {
