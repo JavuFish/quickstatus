@@ -1,21 +1,37 @@
-# Add project specific ProGuard rules here.
-# You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# Keep Capacitor core classes
+-keep class com.getcapacitor.** { *; }
+-dontwarn com.getcapacitor.**
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# Keep Cordova plugin classes
+-keep class org.apache.cordova.** { *; }
+-dontwarn org.apache.cordova.**
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+# Keep Google services (Firebase, Play Services)
+-keep class com.google.firebase.** { *; }
+-dontwarn com.google.firebase.**
+-keep class com.google.android.gms.** { *; }
+-dontwarn com.google.android.gms.**
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# Keep JSON parsing (Gson, etc.)
+-keep class com.google.gson.** { *; }
+-dontwarn com.google.gson.**
+
+# Keep AndroidX classes used by Capacitor
+-keep class androidx.** { *; }
+-dontwarn androidx.**
+
+# Keep Kotlin metadata
+-keep class kotlin.Metadata { *; }
+
+# Keep classes with @Keep annotation
+-keep @androidx.annotation.Keep class * { *; }
+
+# Keep all native methods
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+# General rules to avoid stripping reflection-based code
+-keepclassmembers class * {
+    @androidx.annotation.Keep *;
+}
