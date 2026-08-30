@@ -7,11 +7,15 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
+    // Pastikan repositori hanya boleh didefinisikan di sini
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        // Repositori utama
         google()
         mavenCentral()
         gradlePluginPortal()
+
+        // Repositori lokal untuk plugin Cordova
         flatDir {
             dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
         }
