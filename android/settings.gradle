@@ -11,6 +11,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        gradlePluginPortal()
         flatDir {
             dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
         }
